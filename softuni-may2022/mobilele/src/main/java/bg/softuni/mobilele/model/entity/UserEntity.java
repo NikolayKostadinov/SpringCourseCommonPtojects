@@ -11,10 +11,14 @@ import java.util.stream.Collectors;
 @Entity
 @Table(name = "users")
 public class UserEntity extends BaseEntity {
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email; // username of the user.
     private String password; // password of the user.
+
+    @Column(nullable = false)
     private String firstName; //  first name of the user.
+
+    @Column(nullable = false)
     private String lastName; //  last name of the user.
     private boolean isActive; // true OR false.
     private String imageUrl; // a url of user's picture.
