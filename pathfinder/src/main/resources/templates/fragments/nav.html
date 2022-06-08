@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header th:fragment="main-nav">
+  <nav class="main-nav">
+    <ul>
+      <li>
+        <a th:href="@{/}">Home</a>
+      </li>
+      <li>
+        <a th:href="@{/users/login}">Login</a>
+      </li>
+      <li>
+        <a th:href="@{/users/register}">Register</a>
+      </li>
+      <li>
+        <a th:href="@{/about}">About</a>
+      </li>
+      <li>
+        <a th:href="@{/add-route}">Add new route</a>
+      </li>
+      <li>
+        <a th:href="@{/profile}">Profile</a>
+      </li>
+      <li>
+        <a th:href="@{/admin}">Admin</a>
+      </li>
+      <li>
+        <a th:href="@{/users/logout}">Logout</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+</body>
+</html>
