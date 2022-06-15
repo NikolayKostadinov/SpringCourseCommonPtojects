@@ -2,7 +2,7 @@ package bg.softuni.mobilele.web;
 
 import bg.softuni.mobilele.model.dto.AddOfferDto;
 import bg.softuni.mobilele.model.dto.BrandDto;
-import bg.softuni.mobilele.service.OfferService;
+import bg.softuni.mobilele.service.BrandService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +18,9 @@ import java.util.List;
 @RequestMapping("/offers")
 public class OfferController {
 
-    private final OfferService offerService;
+    private final BrandService offerService;
 
-    public OfferController(OfferService offerService) {
+    public OfferController(BrandService offerService) {
         this.offerService = offerService;
     }
 

@@ -4,6 +4,6 @@ import bg.softuni.mobilele.model.dto.BrandDto;
 
 import java.util.List;
 
-public interface OfferService {
+public interface BrandService {
     List<BrandDto> getAllBrands();
 }
