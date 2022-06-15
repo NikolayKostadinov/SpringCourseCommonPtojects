@@ -26,15 +26,23 @@
 
             <div class="form-group col-md-6 mb-3">
                 <label class="text-center text-white font-weight-bold" for="model">Model</label>
-                <select id="model" class="form-control">
+                <select id="model" class="form-control"
+                        th:field="*{model}"
+                        th:errorclass="is-invalid">
                     <option value="">- Select a model -</option>
-                    <optgroup label="Brand name">
-                        <option>Model</option>
+                    <optgroup th:each="b: ${brands}" th:label="${b.name}">
+                        <option th:each="m : ${b.models}"
+                                th:value="${m.id}"
+                                th:text="${m.name}"
+                                th:selected="${m.id} == *{model}">Model
+                        </option>
                     </optgroup>
                 </select>
-                <p class="errors alert alert-danger">
-                    Vechicle model is required.
-                </p>
+                <ul class="invalid-feedback errors alert alert-danger" th:if="${#fields.hasErrors('model')}">
+                    <li th:each="err : ${#fields.errors('model')}" th:text="${err}">
+                        Input is incorrect
+                    </li>
+                </ul>
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label for="price" class="text-white font-weight-bold">Price</label>
@@ -52,7 +60,7 @@
                         th:field="*{engine}"
                         th:errorclass="is-invalid">
                     <option value="">- Select engine type -</option>
-                    <option th:each="et : ${T(bg.softuni.mobilele.model.enums.EngineEnum)}"
+                    <option th:each="et : ${T(bg.softuni.mobilele.model.enums.EngineEnum).values()}"
                             th:value="${et}"
                             th:text="${et}"
                             th:selected="${et} == *{engine}">Engine type

@@ -12,6 +12,18 @@ public class AddOfferDto {
     @NotNull(message = "Transmission selection is required!")
     private TransmissionEnum transmission;
 
+    @NotNull(message = "Model selection is required!")
+    private Long model;
+
+    public Long getModel() {
+        return model;
+    }
+
+    public AddOfferDto setModel(Long model) {
+        this.model = model;
+        return this;
+    }
+
     public EngineEnum getEngine() {
         return engine;
     }
