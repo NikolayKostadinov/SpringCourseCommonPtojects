@@ -1,7 +1,5 @@
 package bg.softuni.mobilele.model.entity;
 
-import bg.softuni.mobilele.model.entity.enums.UserRoleEnum;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collections;

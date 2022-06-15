@@ -72,6 +72,11 @@ public class UserServiceImpl implements UserService {
         LOGGER.debug("Registered user [{}].", registerDto.getFirstName() + " " + registerDto.getLastName());
     }
 
+    @Override
+    public Optional<UserEntity> getByEmail(String email) {
+        return this.userRepository.findByEmail(email);
+    }
+
     private void login(UserEntity userEntity) {
         this.currentUser.setLoggedIn(true);
         this.currentUser.setName(userEntity.getFirstName() + " " + userEntity.getLastName());
