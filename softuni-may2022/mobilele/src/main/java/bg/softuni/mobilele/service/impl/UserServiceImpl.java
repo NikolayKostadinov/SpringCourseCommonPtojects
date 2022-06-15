@@ -3,10 +3,11 @@ package bg.softuni.mobilele.service.impl;
 import bg.softuni.mobilele.model.dto.UserLoginDto;
 import bg.softuni.mobilele.model.dto.UserRegisterDto;
 import bg.softuni.mobilele.model.entity.UserEntity;
+import bg.softuni.mobilele.model.mapper.UserMapper;
 import bg.softuni.mobilele.repository.UserRepository;
 import bg.softuni.mobilele.service.UserService;
 import bg.softuni.mobilele.user.CurrentUser;
-import org.modelmapper.ModelMapper;
+import org.mapstruct.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,18 +22,18 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final CurrentUser currentUser;
     private final PasswordEncoder passwordEncoder;
-    private final ModelMapper modelMapper;
+    private final UserMapper mapper;
 
 
 
     public UserServiceImpl(UserRepository userRepository,
                            CurrentUser currentUser,
                            PasswordEncoder passwordEncoder,
-                           ModelMapper modelMapper) {
+                           UserMapper mapper) {
         this.userRepository = userRepository;
         this.currentUser = currentUser;
         this.passwordEncoder = passwordEncoder;
-        this.modelMapper = modelMapper;
+        this.mapper = mapper;
     }
 
     @Override
@@ -66,7 +67,7 @@ public class UserServiceImpl implements UserService {
                     registerDto.getFirstName() + " " + registerDto.getLastName());
             return;
         }
-        UserEntity user = this.modelMapper.map(registerDto, UserEntity.class);
+        UserEntity user = this.mapper.userDtoToUserEntity(registerDto);
         this.userRepository.save(user);
         LOGGER.debug("Registered user [{}].", registerDto.getFirstName() + " " + registerDto.getLastName());
     }
