@@ -9,7 +9,7 @@ public class CurrentUser {
     private String name;
     private boolean loggedIn;
 
-    public String getName() {
+    public String getEmail() {
         return name;
     }
 

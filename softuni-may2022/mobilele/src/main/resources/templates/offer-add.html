@@ -27,14 +27,14 @@
             <div class="form-group col-md-6 mb-3">
                 <label class="text-center text-white font-weight-bold" for="model">Model</label>
                 <select id="model" class="form-control"
-                        th:field="*{model}"
+                        th:field="*{modelId}"
                         th:errorclass="is-invalid">
                     <option value="">- Select a model -</option>
                     <optgroup th:each="b: ${brands}" th:label="${b.name}">
                         <option th:each="m : ${b.models}"
                                 th:value="${m.id}"
                                 th:text="${m.name}"
-                                th:selected="${m.id} == *{model}">Model
+                                th:selected="${m.id} == *{modelId}">Model
                         </option>
                     </optgroup>
                 </select>

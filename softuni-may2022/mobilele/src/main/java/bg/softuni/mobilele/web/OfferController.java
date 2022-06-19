@@ -3,6 +3,7 @@ package bg.softuni.mobilele.web;
 import bg.softuni.mobilele.model.dto.AddOfferDto;
 import bg.softuni.mobilele.model.dto.BrandDto;
 import bg.softuni.mobilele.service.BrandService;
+import bg.softuni.mobilele.service.OfferService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +19,13 @@ import java.util.List;
 @RequestMapping("/offers")
 public class OfferController {
 
-    private final BrandService offerService;
+    private final BrandService brandService;
+    private final OfferService offerService;
 
-    public OfferController(BrandService offerService) {
+    public OfferController(BrandService brandService, OfferService offerService) {
+        this.brandService = brandService;
         this.offerService = offerService;
     }
-
 
     @GetMapping("all")
     public String allOffers() {
@@ -44,7 +46,8 @@ public class OfferController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.offerModel", bindingResult);
             return "redirect:add";
         }
-        // TODO: 15.6.2022 г. Add Offer service
+
+        this.offerService.add(offerModel);
         return "redirect:/";
     }
 
@@ -55,6 +58,6 @@ public class OfferController {
 
     @ModelAttribute("brands")
     private List<BrandDto> initBrands() {
-        return this.offerService.getAllBrands();
+        return this.brandService.getAllBrands();
     }
 }

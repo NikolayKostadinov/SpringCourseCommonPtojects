@@ -40,7 +40,7 @@
                     <div class="form-inline my-2 my-lg-0 px-3">
                         <div class="logged-users"
                              text="Welcome, Gosho"></div>
-                        <a class="nav-link" th:href="@{/users/logout}" th:text="'Logout, ' + ${@currentUser.getName()}">Logout</a>
+                        <a class="nav-link" th:href="@{/users/logout}" th:text="'Logout, ' + ${@currentUser.getEmail()}">Logout</a>
                     </div>
                 </li>
 

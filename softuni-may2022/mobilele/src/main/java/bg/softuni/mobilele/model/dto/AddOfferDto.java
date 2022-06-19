@@ -3,7 +3,10 @@ package bg.softuni.mobilele.model.dto;
 import bg.softuni.mobilele.model.enums.EngineEnum;
 import bg.softuni.mobilele.model.enums.TransmissionEnum;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 public class AddOfferDto {
     @NotNull(message = "Engine selection is required!")
@@ -13,16 +16,21 @@ public class AddOfferDto {
     private TransmissionEnum transmission;
 
     @NotNull(message = "Model selection is required!")
-    private Long model;
+    private Long modelId;
 
-    public Long getModel() {
-        return model;
-    }
+    @NotNull(message = "Price is required!")
+    @Positive(message = "Price must be positive!")
+    private Integer price;
 
-    public AddOfferDto setModel(Long model) {
-        this.model = model;
-        return this;
-    }
+    @NotNull(message = "Year is required")
+    @Min(value = 1900, message = "Year must be greater than 1900")
+    private Integer year;
+
+    @NotEmpty
+    private String description;
+
+    @NotEmpty
+    private String imageUrl;
 
     public EngineEnum getEngine() {
         return engine;
@@ -39,6 +47,51 @@ public class AddOfferDto {
 
     public AddOfferDto setTransmission(TransmissionEnum transmission) {
         this.transmission = transmission;
+        return this;
+    }
+
+    public Long getModelId() {
+        return modelId;
+    }
+
+    public AddOfferDto setModelId(Long modelId) {
+        this.modelId = modelId;
+        return this;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public AddOfferDto setPrice(Integer price) {
+        this.price = price;
+        return this;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public AddOfferDto setYear(Integer year) {
+        this.year = year;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public AddOfferDto setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public AddOfferDto setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
         return this;
     }
 }

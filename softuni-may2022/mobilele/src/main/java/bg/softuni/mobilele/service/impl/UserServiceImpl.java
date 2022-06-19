@@ -7,7 +7,6 @@ import bg.softuni.mobilele.model.mapper.UserMapper;
 import bg.softuni.mobilele.repository.UserRepository;
 import bg.softuni.mobilele.service.UserService;
 import bg.softuni.mobilele.user.CurrentUser;
-import org.mapstruct.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -56,7 +55,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void logout() {
-        LOGGER.debug("User with name [{}] logged out.", currentUser.getName());
+        LOGGER.debug("User with name [{}] logged out.", currentUser.getEmail());
         this.currentUser.clear();
     }
 
@@ -80,7 +79,7 @@ public class UserServiceImpl implements UserService {
     private void login(UserEntity userEntity) {
         this.currentUser.setLoggedIn(true);
         this.currentUser.setName(userEntity.getFirstName() + " " + userEntity.getLastName());
-        LOGGER.debug("User with name [{}] logged in.", currentUser.getName());
+        LOGGER.debug("User with name [{}] logged in.", currentUser.getEmail());
     }
 
 
