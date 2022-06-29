@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @Table(name = "users")
 public class UserEntity extends BaseEntity {
     @Column(nullable = false, unique = true)
-    private String email; // username of the user.
+    private String email; // email of the user.
     private String password; // password of the user.
 
     @Column(nullable = false)
@@ -23,6 +23,11 @@ public class UserEntity extends BaseEntity {
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<UserRoleEntity> userRoles; //  user's roles (User, Moderator or Admin)
+
+    public UserEntity setUserRoles(List<UserRoleEntity> userRoles) {
+        this.userRoles = userRoles;
+        return this;
+    }
 
     public UserEntity() {
         this.userRoles = new ArrayList<>();

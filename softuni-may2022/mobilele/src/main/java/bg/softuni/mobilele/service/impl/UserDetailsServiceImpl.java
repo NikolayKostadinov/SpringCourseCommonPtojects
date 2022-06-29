@@ -23,10 +23,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity user = this.repository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User with name " + username + " not found!"));
-
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        System.out.println("TRY TO AUTHENTICATE USER: " + email);
+        UserEntity user = this.repository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User with email " + email + " not found!"));
         return mapToUserDetails(user);
     }
 
@@ -37,7 +37,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getUserRole().name()))
                 .collect(Collectors.toList());
 
-        return new User(userEntity.getUsername(),
+        return new User(userEntity.getEmail(),
                 userEntity.getPassword(),
                 authorities);
     }

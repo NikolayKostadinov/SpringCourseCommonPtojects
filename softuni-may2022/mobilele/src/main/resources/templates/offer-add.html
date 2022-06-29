@@ -38,8 +38,8 @@
                         </option>
                     </optgroup>
                 </select>
-                <ul class="invalid-feedback errors alert alert-danger" th:if="${#fields.hasErrors('model')}">
-                    <li th:each="err : ${#fields.errors('model')}" th:text="${err}">
+                <ul class="invalid-feedback errors alert alert-danger" th:if="${#fields.hasErrors('modelId')}">
+                    <li th:each="err : ${#fields.errors('modelId')}" th:text="${err}">
                         Input is incorrect
                     </li>
                 </ul>
