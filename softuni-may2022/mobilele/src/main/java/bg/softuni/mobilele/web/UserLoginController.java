@@ -24,17 +24,17 @@ public class UserLoginController {
         return "auth-login";
     }
 
-    @GetMapping("/logout")
-    public String logout(){
-        this.userService.logout();
-        return "redirect:/";
-    }
-
-    @PostMapping("/login")
-    public String login(UserLoginDto dto, HttpSession session){
-        if (this.userService.login(dto)){
-            session.setAttribute("username", dto.getUsername());
-        }
-        return "redirect:/";
-    }
+//    @GetMapping("/logout")
+//    public String logout(){
+//        this.userService.logout();
+//        return "redirect:/";
+//    }
+//
+//    @PostMapping("/login")
+//    public String login(UserLoginDto dto, HttpSession session){
+//        if (this.userService.login(dto)){
+//            session.setAttribute("username", dto.getUsername());
+//        }
+//        return "redirect:/";
+//    }
 }

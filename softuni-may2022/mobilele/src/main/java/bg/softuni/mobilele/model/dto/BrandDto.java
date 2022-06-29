@@ -30,7 +30,7 @@ public class BrandDto {
         return this;
     }
 
-    public BrandDto аddModel(ModelDto model) {
+    public BrandDto addModel(ModelDto model) {
         this.models.add(model);
         return this;
     }

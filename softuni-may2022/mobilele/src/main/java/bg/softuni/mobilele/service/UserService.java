@@ -7,9 +7,6 @@ import bg.softuni.mobilele.model.entity.UserEntity;
 import java.util.Optional;
 
 public interface UserService {
-    boolean login(UserLoginDto loginDTO);
-
-    void logout();
 
     void register(UserRegisterDto registerDto);
 
