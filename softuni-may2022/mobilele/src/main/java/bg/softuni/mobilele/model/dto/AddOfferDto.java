@@ -3,10 +3,7 @@ package bg.softuni.mobilele.model.dto;
 import bg.softuni.mobilele.model.enums.EngineEnum;
 import bg.softuni.mobilele.model.enums.TransmissionEnum;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
+import javax.validation.constraints.*;
 
 public class AddOfferDto {
     @NotNull(message = "Engine selection is required!")
@@ -23,9 +20,13 @@ public class AddOfferDto {
     private Integer price;
 
     @NotNull(message = "Year is required")
-    @Min(value = 1900, message = "Year must be greater than 1900")
+    @Min(value = 1900, message = "Year must be greater than {value}")
     private Integer year;
 
+    @NotNull(message = "Millage is required")
+    @Min(value = 0, message = "Mileage must be greater than {value}")
+    @Max(value=900000,  message = "Mileage must be lower than {value}")
+    private Integer mileage;
     @NotEmpty
     private String description;
 
@@ -74,6 +75,15 @@ public class AddOfferDto {
 
     public AddOfferDto setYear(Integer year) {
         this.year = year;
+        return this;
+    }
+
+    public Integer getMileage() {
+        return mileage;
+    }
+
+    public AddOfferDto setMileage(Integer mileage) {
+        this.mileage = mileage;
         return this;
     }
 
