@@ -13,10 +13,6 @@ import java.time.format.DateTimeFormatter;
 @Configuration
 public class ApplicationConfig {
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new Pbkdf2PasswordEncoder();
-    }
 
 //    @Bean
 //    public ModelMapper modelMapper(PasswordEncoder passwordEncoder) {
