@@ -1,13 +1,16 @@
 package bg.softuni.mobilele.model.mapper;
 
-import bg.softuni.mobilele.model.dto.AddOfferDto;
+import bg.softuni.mobilele.model.dto.offer.AddOfferDTO;
+import bg.softuni.mobilele.model.dto.offer.OfferDetailDTO;
 import bg.softuni.mobilele.model.entity.OfferEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring")
 public interface OfferMapper {
+  OfferEntity addOfferDtoToOfferEntity(AddOfferDTO addOfferDTO);
 
-    OfferEntity addOfferDtoToOfferEntity(AddOfferDto offerModel);
+  @Mapping(source = "model.name", target = "model")
+  @Mapping(source = "model.brand.name", target = "brand")
+  OfferDetailDTO offerEntityToCardListingOfferDto(OfferEntity offerEntity);
 }

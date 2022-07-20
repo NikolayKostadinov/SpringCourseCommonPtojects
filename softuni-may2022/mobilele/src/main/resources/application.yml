@@ -1,24 +1,20 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/mobilelele?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/mobilele?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
     username: root
+    password:
   jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: update
-    open-in-view: false
+      ddl-auto: create-drop
     defer-datasource-initialization: true
   sql:
     init:
-      mode: never
-  mvc:
-    hiddenmethod:
-      filter:
-        enabled: true
-#logging:
-#  level:
-#    root: ERROR
-#    org.springframework.web: WARN
-#    bg.softuni.mobilele: DEBUG
-#    org.hibernate: ERROR
+      mode: always
+
+mail:
+  host: "localhost"
+  port: 1025
+  username: "mobilele@mobilele.com"
+  password: ""

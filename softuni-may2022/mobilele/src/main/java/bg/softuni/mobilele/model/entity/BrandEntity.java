@@ -3,7 +3,6 @@ package bg.softuni.mobilele.model.entity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "brands")
@@ -12,7 +11,11 @@ public class BrandEntity extends BaseEntity{
   @Column(nullable = false)
   private String name;
 
-  @OneToMany(mappedBy = "brand", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @OneToMany(
+      mappedBy = "brand",
+      fetch = FetchType.EAGER,
+      cascade = CascadeType.ALL
+  )
   private List<ModelEntity> models = new ArrayList<>();
 
   public String getName() {
@@ -36,8 +39,8 @@ public class BrandEntity extends BaseEntity{
   @Override
   public String toString() {
     return "BrandEntity{" +
-            "name='" + name + '\'' +
-            ", models=" + models.stream().map(m->m.getName()).collect(Collectors.joining(System.lineSeparator())) +
-            '}';
+        "name='" + name + '\'' +
+        ", models=" + models +
+        '}';
   }
 }
